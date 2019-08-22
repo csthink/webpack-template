@@ -1,6 +1,7 @@
 import _ from 'lodash';
 
 import './style/index.css';
+import './style/test.scss';
 
 function createElement() {
   let div = document.createElement('div');
