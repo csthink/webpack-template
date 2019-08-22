@@ -8,7 +8,7 @@ module.exports = {
   entry: './src/index.js',
   mode: 'development',
   output: {
-    filename: 'main.js',
+    filename: 'main.[hash:8].js',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
@@ -47,8 +47,8 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].css', // 最终输出的文件名
-      chunkFilename: '[id].css'
+      filename: '[name].[hash:8].css', // 最终输出的文件名
+      chunkFilename: '[id].[hash:8].css'
     }),
     new OptimizeCssAssetsPlugin({}),
     new UglifyJsPlugin({
