@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // css 单独打包
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'); // 压缩 css
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); // 压缩 JS
+const HtmlWebpackPlugin = require('html-webpack-plugin'); // 创建HTML模板，动态引用静态文件
 
 
 module.exports = {
@@ -55,6 +56,16 @@ module.exports = {
       cache: true, // 当 JS 没有发生变化则不压缩
       parallel: true, // 启用并行压缩
       sourceMap: true // 启用 sourceMap
+    }),
+    new HtmlWebpackPlugin({
+      title: "Webpack study!", // 生成的文件标题
+      filename: "index.html", // 最终生成的文件名
+      template: path.join(__dirname, "template.html"), // 以 template.html为模板，把打包生成的js|css自动引入到这个html文件
+      minify: { // 压缩选项
+        collapseWhitespace: true, // 移除空格
+        removeComments: true, // 移除注释
+        removeAttributeQuotes: true, // 移除双引号
+      }
     })
   ]
 }
