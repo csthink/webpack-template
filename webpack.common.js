@@ -4,6 +4,13 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // 清理目录�
 
 module.exports = {
   entry: './src/index.js',
+  resolve: {
+    alias: {
+      '@' : path.resolve(__dirname, 'src/'),
+      'assets' : path.resolve(__dirname, 'src/assets/')
+    },
+    // extensions: [".js", ".json"] // 自动解析指定的扩展名文件,这里是默认值
+  },
   module: {
     noParse: function(content){
       return /jquery|lodash/.test(content);
