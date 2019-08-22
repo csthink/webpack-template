@@ -1,4 +1,4 @@
-// import _ from 'lodash' // 改为 CDN 引入
+import _ from 'lodash'
 
 // import './assets/style/index.css'
 // import './assets/style/test.scss'
@@ -14,6 +14,14 @@ function createElement () {
   return div
 }
 
-console.log('test log')
+// 因为在 eslintrc 中配置了全局变量，这里不会报错
+if (PRODUCTION) {
+  console.log('Production log')
+} else {
+  console.log('Debug info')
+}
+
+// 因为在 eslintrc 中配置了全局变量，这里不会报错
+console.log('SERVICE_URL:' + SERVICE_URL)
 
 document.body.appendChild(createElement())

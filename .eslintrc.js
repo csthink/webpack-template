@@ -10,7 +10,9 @@ module.exports = {
   },
   extends: 'standard', // 配置标准的js风格
   globals: {
-    NODE_ENV: false
+    NODE_ENV: false,
+    PRODUCTION: "readonly",
+    SERVICE_URL: "readonly"
   },
   'rules': {
     'genetator-start-spacing': 'off',
