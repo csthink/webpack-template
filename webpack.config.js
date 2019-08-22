@@ -65,6 +65,11 @@ module.exports = {
             }
           },
         ]
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        include: [path.resolve(__dirname, 'src/')],
+        use: [ 'file-loader' ]
       }
     ]
   },
