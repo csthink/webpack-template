@@ -49,7 +49,11 @@ module.exports = {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
         include: [path.resolve(__dirname, 'src/')],
         use: [
-          "file-loader",
+          // "file-loader",
+          {
+            loader: 'url-loader', // 根据图片大小，把图片转换成 base64
+            options: { limit: 10000 },
+          },
           {
             loader: "image-webpack-loader",
             options: {
