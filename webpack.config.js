@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -15,7 +16,8 @@ module.exports = {
       {
         test: /\.(sc|c|sa)ss$/,
         use: [
-          'style-loader',
+          // 'style-loader',
+          MiniCssExtractPlugin.loader, // 将 CSS 抽取成单独文件
           {
             loader: 'css-loader',
             options: { sourceMap: true }
@@ -39,5 +41,11 @@ module.exports = {
         ]
       },
     ]
-  }
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css', // 最终输出的文件名
+      chunkFilename: '[id].css'
+    })
+  ]
 }
