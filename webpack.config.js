@@ -13,13 +13,19 @@ module.exports = {
     },
     rules: [
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        test: /\.(sc|c|sa)ss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: { sourceMap: true }
+          },
+          {
+            loader:"sass-loader",
+            options:{ sourceMap: true }
+          },
+        ]
       },
-      {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
-      }
     ]
   }
 }
