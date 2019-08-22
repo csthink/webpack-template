@@ -1,5 +1,7 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // css 单独打包
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'); // 压缩 css
+
 
 module.exports = {
   entry: './src/index.js',
@@ -46,6 +48,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css', // 最终输出的文件名
       chunkFilename: '[id].css'
-    })
+    }),
+    new OptimizeCssAssetsPlugin({})
   ]
 }
