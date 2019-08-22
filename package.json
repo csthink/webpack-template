@@ -1,8 +1,7 @@
 {
   "name": "webpack-template",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Webpack 脚手架",
   "browserslist": [
     "> 1%",
     "last 2 versions",
@@ -16,6 +15,7 @@
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^9.6.1",
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.2.0",
     "html-webpack-plugin": "^3.2.0",
     "lodash": "^4.17.15",

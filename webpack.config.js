@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // css 单独�
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'); // 压缩 css
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); // 压缩 JS
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // 创建HTML模板，动态引用静态文件
+const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // 清理目录插件
 
 
 module.exports = {
@@ -66,6 +67,7 @@ module.exports = {
         removeComments: true, // 移除注释
         removeAttributeQuotes: true, // 移除双引号
       }
-    })
+    }),
+    new CleanWebpackPlugin()
   ]
 }
