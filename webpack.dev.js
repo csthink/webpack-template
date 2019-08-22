@@ -2,6 +2,7 @@ const path = require('path');
 const merge = require('webpack-merge');
 const commonConfig = require('./webpack.common.js');
 const webpack = require('webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; // 对打包后的文件进行数据分析，从来找到项目优化的方向,dev 打包后，会自动打开 http://127.0.0.1:8888/
 
 let devConfig = {
   mode: 'development',
@@ -60,7 +61,8 @@ let devConfig = {
   },
   plugins: [
     new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new BundleAnalyzerPlugin()
  ]
 }
 

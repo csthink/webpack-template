@@ -11,9 +11,10 @@ module.exports = {
     },
     // extensions: [".js", ".json"] // 自动解析指定的扩展名文件,这里是默认值
   },
-  // externals: { // 将这些不需要打包的模块从输出的 bundle 中排除
-  //   jquery: 'jQuery'
-  // },
+  externals: { // 将这些不需要打包的模块从输出的 bundle 中排除
+    jquery: 'jQuery',
+    lodash: '_'
+  },
   module: {
     noParse: function(content){
       return /jquery|lodash/.test(content);

@@ -1,4 +1,4 @@
-import _ from 'lodash'
+// import _ from 'lodash' // 改为 CDN 引入
 
 // import './assets/style/index.css'
 // import './assets/style/test.scss'
