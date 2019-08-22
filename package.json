@@ -10,7 +10,9 @@
   "scripts": {
     "dev": "npx webpack-dev-server --config webpack.dev.js",
     "dev:build": "npx webpack --config webpack.dev.js",
-    "prod:build": "npx webpack --config webpack.prod.js"
+    "prod:build": "npx webpack --config webpack.prod.js",
+    "lint": "eslint --ext .js,.jsx,.vue src",
+    "lint:fix": "eslint --fix --ext .js,.jsx,.vue src"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +24,8 @@
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.2.0",
+    "eslint": "^6.2.1",
+    "eslint-loader": "^2.2.1",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
     "image-webpack-loader": "^5.0.0",
@@ -31,6 +35,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.3.1",
+    "standard": "^14.0.0",
     "style-loader": "^1.0.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^2.1.0",
