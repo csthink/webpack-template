@@ -10,4 +10,6 @@ function createElement() {
   return div;
 }
 
+console.log('test log');
+
 document.body.appendChild(createElement())

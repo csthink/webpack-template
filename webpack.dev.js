@@ -4,6 +4,7 @@ const commonConfig = require('./webpack.common.js');
 
 let devConfig = {
   mode: 'development',
+  devtool: 'cheap-module-eval-source-map', // 开启 js 的 sourceMap,为了能方便定位错误
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist')
