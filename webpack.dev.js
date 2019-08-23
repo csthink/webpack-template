@@ -7,7 +7,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const devConfig = {
   devtool: 'cheap-module-eval-source-map', // 开启 js 的 sourceMap,为了能方便定位错误
   output: {
-    filename: 'main.js',
+    filename: 'js/[name].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: ''
     // publicPath: '/public/',
@@ -41,20 +41,7 @@ const devConfig = {
           },
           {
             loader: 'postcss-loader',
-            options: {
-              ident: 'postcss',
-              sourceMap: true,
-              plugins: (loader) => [
-                require('autoprefixer')({
-                  browsers: [
-                    'last 10 Chrome versions',
-                    'last 5 Firefox versions',
-                    'Safari >= 6',
-                    'ie > 8'
-                  ]
-                })
-              ]
-            }
+            options: { sourceMap: true }
           },
           {
             loader: 'sass-loader',

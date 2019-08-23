@@ -8,8 +8,8 @@ const commonConfig = require('./webpack.common')
 
 const prodConfig = {
   output: {
-    filename: '[name].[contenthash:8].js',
-    chunkFilename: '[name].chunk.[chunkhash:8].js',
+    filename: 'js/[name].[contenthash:8].js',
+    chunkFilename: 'js/[name].chunk.[chunkhash:8].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: ''
   },
