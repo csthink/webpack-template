@@ -16,7 +16,8 @@ const devConfig = {
     contentBase: path.join(__dirname, 'dist'), // 本地服务器所加载的页面所在的目录
     compress: true, // 为所有服务启用gzip压缩
     hot: true, // 启动热更新替换特性，需要配合 webpack.HotModuleReplacementPlugin 插件
-    overlay: {
+    overlay: { // 出现错误或者警告时候出现覆盖页面的弹层来报告信息
+      warnings: true,
       error: true
     },
     // open: true, // 服务器将打开浏览器
@@ -43,10 +44,15 @@ const devConfig = {
             options: {
               ident: 'postcss',
               sourceMap: true,
-              plugins: loader => [
-                require('autoprefixer')()
-                // 这里可以使用更多配置，如上面提到的 postcss-cssnext 等
-                // require('postcss-cssnext')()
+              plugins: (loader) => [
+                require('autoprefixer')({
+                  browsers: [
+                    'last 10 Chrome versions',
+                    'last 5 Firefox versions',
+                    'Safari >= 6',
+                    'ie > 8'
+                  ]
+                })
               ]
             }
           },

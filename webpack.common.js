@@ -1,5 +1,4 @@
 const path = require('path')
-const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin') // 创建HTML模板，动态引用静态文件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin') // 清理目录插件
 const devMode = process.env.NODE_ENV !== 'production' // 当前执行环境是否是开发模式
@@ -26,7 +25,15 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        use: ['babel-loader'],
+        use: [
+          'babel-loader',
+          {
+            loader: 'eslint-loader',
+            options: {
+              fix: true
+            }
+          }
+        ],
         exclude: /(node_modules|bower_components)/
       },
       {
@@ -36,7 +43,8 @@ module.exports = {
           {
             loader: 'url-loader', // 根据图片大小，把图片转换成 base64
             options: {
-              name: '[path]/[name].[hash:8].[ext]',
+              name: '[name].[hash:8].[ext]',
+              outputPath: 'images/',
               limit: 10240 // 图片小于limit(单位byte, 10KB)的时候会把图片 base64 编码,大于就会打包成文件格式
             }
           },
@@ -59,7 +67,8 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: '[path]/[name].[hash:8].[ext]'
+              name: '[name].[hash:8].[ext]',
+              outputPath: 'fonts/'
             }
           }
         ]
@@ -75,6 +84,9 @@ module.exports = {
         collapseWhitespace: true, // 移除空格
         removeComments: true // 移除注释
         // removeAttributeQuotes: true // 移除双引号
+        // removeRedundantAttributes: true,
+        // removeScriptTypeAttributes: true,
+        // removeStyleLinkTypeAttributes: true
       }
     }),
     new CleanWebpackPlugin()

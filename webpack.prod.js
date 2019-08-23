@@ -8,7 +8,7 @@ const commonConfig = require('./webpack.common')
 
 const prodConfig = {
   output: {
-    filename: 'main.[contenthash:8].js',
+    filename: '[name].[contenthash:8].js',
     chunkFilename: '[name].chunk.[chunkhash:8].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: ''
@@ -18,7 +18,12 @@ const prodConfig = {
       {
         test: /\.(sc|c|sa)ss$/,
         use: [
-          MiniCssExtractPlugin.loader, // 将 CSS 抽取成单独文件
+          {
+            loader: MiniCssExtractPlugin.loader, // 将 CSS 抽取成单独文件
+            options: {
+              publicPath: '../'
+            }
+          },
           {
             loader: 'css-loader',
             options: { sourceMap: true }
@@ -45,8 +50,8 @@ const prodConfig = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash:8].css', // 最终输出的文件名
-      chunkFilename: '[id].[chunkhash:8].css',
+      filename: 'css/[name].[contenthash:8].css', // 最终输出的文件名
+      chunkFilename: 'css/[id].[chunkhash:8].css',
       ignoreOrder: false
     }),
     new OptimizeCssAssetsPlugin({}),
