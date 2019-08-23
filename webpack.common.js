@@ -83,9 +83,6 @@ module.exports = {
         // removeAttributeQuotes: true // 移除双引号
       }
     }),
-    new CleanWebpackPlugin(),
-    new webpack.DefinePlugin({ // 创建全局常量
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    })
+    new CleanWebpackPlugin()
   ]
 }

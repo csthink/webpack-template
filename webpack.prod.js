@@ -8,7 +8,8 @@ const commonConfig = require('./webpack.common')
 
 const prodConfig = {
   output: {
-    filename: 'main.[hash:8].js',
+    filename: 'main.[contenthash:8].js',
+    chunkFilename: '[name].chunk.[chunkhash:8].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: ''
   },
@@ -59,7 +60,15 @@ const prodConfig = {
       SERVICE_URL: JSON.stringify('https://openapi.csthink.com'),
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
-  ]
+  ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    },
+    runtimeChunk: {
+      name: 'runtime'
+    }
+  }
 }
 
 module.exports = merge(commonConfig, prodConfig)
