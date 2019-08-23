@@ -26,13 +26,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        use: [{
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-            cacheDirectory: true // 构建时会缓存文件夹，后续从缓存中读取，将提高打包效率
-          }
-        }],
+        use: ['babel-loader'],
         exclude: /(node_modules|bower_components)/
       },
       {
